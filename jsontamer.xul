@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer">
+	<style xmlns="http://www.w3.org/1999/xhtml" type="text/css" href="jsontamer.css"/>
+	<script type="application/x-javascript" src="jsontamer.js"/>
+	<hbox flex="1" id="edit_form">
+		<vbox style="width:250px;" id="left_column">
+			<tree flex="1" enableColumnsDrag="true">
+				<treecols>
+					<treecol id="firstname" label="Name" primary="true" flex="3"/>
+					<splitter style="width; 1px;"/>
+					<treecol id="lastname" label="Value" flex="7"/>
+				</treecols>
+				<treechildren>
+					<treeitem container="true" open="true">
+						<treerow>
+							<treecell label="Root"/>
+							<treecell label="Object"/>
+						</treerow>
+						<treechildren>
+							<treeitem>
+								<treerow>
+									<treecell label="test"/>
+									<treecell label="test"/>
+								</treerow>
+							</treeitem>
+							<treeitem>
+								<treerow>
+									<treecell label="test2"/>
+									<treecell label="test"/>
+								</treerow>
+							</treeitem>
+						</treechildren>
+					</treeitem>
+				</treechildren>
+			</tree>
+		</vbox>
+		<splitter style="padding:0;margin:0;"/>
+		<vbox orient="vertical" id="right_column" flex="1">
+			<hbox id="hbox_label">
+				<label value="Label" control="edit_label"/>
+				<textbox id="edit_label" flex="1" label="&#xA;"/>
+			</hbox>
+			<hbox id="hbox_type">
+				<label value="Type" control="edit_type"/>
+				<menulist id="edit_type">
+					<menupopup>
+						<menuitem label="Array" name="array"/>
+						<menuitem label="Boolean" name="boolean"/>
+						<menuitem label="Object" name="object"/>
+						<menuitem label="Number" name="number"/>
+						<menuitem label="String" name="string"/>
+						<menuitem label="Null" name="null"/>
+						<menuitem label="Undefined" name="undefined"/>
+					</menupopup>
+				</menulist>
+			</hbox>
+			<hbox id="hbox_value">
+				<label value="Value" control="edit_value"/>
+				<textbox id="edit_value" multiline="true" flex="1"/>
+			</hbox>
+			<button label="Save" id="edit_save" oncommand="jsontamer.saveClicked();"/>
+		</vbox>
+	</hbox>
+</window>
