@@ -1,44 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer">
+<?xml-stylesheet href="jsontamer.css" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer" onload="jsontamer.load();">
 	<style xmlns="http://www.w3.org/1999/xhtml" type="text/css" href="jsontamer.css"/>
 	<script type="application/x-javascript" src="jsontamer.js"/>
-	<hbox flex="1" id="edit_form">
-		<vbox style="width:250px;" id="left_column">
-			<tree flex="1" enableColumnsDrag="true">
+	<hbox flex="1">
+		<vbox flex="5" id="left_column">
+			<tree flex="1" enableColumnsDrag="true" id="tree" hidecolumnpicker="true" onselect="jsontamer.onRowSelect();" selType="single">
 				<treecols>
 					<treecol id="firstname" label="Name" primary="true" flex="3"/>
-					<splitter style="width; 1px;"/>
+					<splitter class="tree-splitter"/>
 					<treecol id="lastname" label="Value" flex="7"/>
 				</treecols>
-				<treechildren>
-					<treeitem container="true" open="true">
-						<treerow>
-							<treecell label="Root"/>
-							<treecell label="Object"/>
-						</treerow>
-						<treechildren>
-							<treeitem>
-								<treerow>
-									<treecell label="test"/>
-									<treecell label="test"/>
-								</treerow>
-							</treeitem>
-							<treeitem>
-								<treerow>
-									<treecell label="test2"/>
-									<treecell label="test"/>
-								</treerow>
-							</treeitem>
-						</treechildren>
-					</treeitem>
-				</treechildren>
+				<treechildren id="treechildren"/>
 			</tree>
 		</vbox>
 		<splitter style="padding:0;margin:0;"/>
-		<vbox orient="vertical" id="right_column" flex="1">
+		<vbox orient="vertical" id="right_column" flex="2" style="padding:1em;">
 			<hbox id="hbox_label">
-				<label value="Label" control="edit_label"/>
+				<label value="Label" control="edit_label" align="right"/>
 				<textbox id="edit_label" flex="1" label="&#xA;"/>
 			</hbox>
 			<hbox id="hbox_type">
@@ -61,5 +41,6 @@
 			</hbox>
 			<button label="Save" id="edit_save" oncommand="jsontamer.saveClicked();"/>
 		</vbox>
+		<resizer/>
 	</hbox>
 </window>
