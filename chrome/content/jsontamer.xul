@@ -4,7 +4,14 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer" onload="jsontamer.load();">
 	<style xmlns="http://www.w3.org/1999/xhtml" type="text/css" href="jsontamer.css"/>
 	<script type="application/x-javascript" src="jsontamer.js"/>
-	<hbox flex="1">
+	<hbox flex="1" orient="vertical">
+		<vbox orient="vertical" id="right_column" style="padding:1em;">
+			<hbox id="hbox_value">
+				<label control="edit_value" value="JSON String"/>
+				<textbox id="edit_value" multiline="false" flex="1"/>
+				<button label="Save" id="edit_save" oncommand="jsontamer.saveClicked();"/>
+			</hbox>
+		</vbox>
 		<vbox flex="5" id="left_column">
 			<tree flex="1" enableColumnsDrag="true" id="tree" hidecolumnpicker="true" onselect="jsontamer.onRowSelect();" selType="single">
 				<treecols>
@@ -16,31 +23,6 @@
 			</tree>
 		</vbox>
 		<splitter style="padding:0;margin:0;"/>
-		<vbox orient="vertical" id="right_column" flex="2" style="padding:1em;">
-			<hbox id="hbox_label">
-				<label value="Label" control="edit_label" align="right"/>
-				<textbox id="edit_label" flex="1" label="&#xA;"/>
-			</hbox>
-			<hbox id="hbox_type">
-				<label value="Type" control="edit_type"/>
-				<menulist id="edit_type">
-					<menupopup>
-						<menuitem label="Array" name="array"/>
-						<menuitem label="Boolean" name="boolean"/>
-						<menuitem label="Object" name="object"/>
-						<menuitem label="Number" name="number"/>
-						<menuitem label="String" name="string"/>
-						<menuitem label="Null" name="null"/>
-						<menuitem label="Undefined" name="undefined"/>
-					</menupopup>
-				</menulist>
-			</hbox>
-			<hbox id="hbox_value">
-				<label value="Value" control="edit_value"/>
-				<textbox id="edit_value" multiline="true" flex="1"/>
-			</hbox>
-			<button label="Save" id="edit_save" oncommand="jsontamer.saveClicked();"/>
-		</vbox>
 		<resizer/>
 	</hbox>
 </window>
