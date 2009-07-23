@@ -1,8 +1,22 @@
 (function() {
     
+    function atypeof(value) {
+        var s = typeof value;
+        if (s === 'object') {
+            if (value) {
+                if (value instanceof Array) {
+                    s = 'array';
+                }
+            } else {
+                s = 'null';
+            }
+        }
+        return s;
+    }
+    
     var jst = {};
-          
-    jst.sample = {"employee":{"gid":102,
+    
+    jst.json = {"employee":{"gid":102,
         "companyID":121,
         "defaultActionID":444,
         "names":{"firstName":"Stive",
@@ -36,11 +50,16 @@
     window.jsontamer = jst;
     
     jst.load = function() {
-        jst.parse(jst.sample);
+        jst.parse(jst.json);
     };
     
     jst.saveClicked = function() {
-        alert('i be lollin');
+        var tree = document.getElementById('tree');
+        var editValue = document.getElementById('edit_value');
+        console.log(JSON.parse(editValue.getAttribute('value')));
+        jst.json = JSON.parse(editValue.getAttribute('value'));
+        console.log(jst.json);
+        jst.parse(jst.json);
     };
     
     jst.parse = function(json) {
@@ -59,15 +78,15 @@
     };
 
     jst.recursiveDOM = function(obj, name, parent) {
-    
         var treeitem = document.createElement('treeitem');
         var row = document.createElement('treerow');
         row.setAttribute("nodeData", JSON.stringify(obj) );
       
         var key = document.createElement('treecell');
         key.setAttribute("label", name);
+        key.setAttribute("properties", atypeof(obj));
         row.appendChild(key);
-      
+    
         var value = document.createElement('treecell');
         value.setAttribute("label", jst.getLabel(obj));
         row.appendChild(value);
@@ -79,26 +98,25 @@
             for (var i in obj) {
                 jst.recursiveDOM(obj[i], i, tc);
             }
-        
             treeitem.appendChild(tc);
         }
-      
+
         parent.appendChild(treeitem);
     };
     
     jst.getLabel = function(obj) {
-        switch (typeof(obj)) {
+        switch (atypeof(obj)) {
             case 'string':
                 return '"'+ obj.toString() +'"';
-                break;
             case 'number':
                 return obj;
             case 'object':
+            case 'array':
                 return JSON.stringify(obj);
-                break;
+            case 'boolean':
+                return obj.toString();
             default:
-                return 'Unknown';
-                break;
+                return 'Unknown:'+ obj.toString();
         }
         return;
     };
@@ -107,6 +125,11 @@
         var tree = document.getElementById('tree');
         var selected = tree.getElementsByTagName('treeitem')[tree.currentIndex];
         console.log('%o', selected);
+        
+        if (tree.currentIndex === 0) {
+            var editValue = document.getElementById('edit_value');
+            editValue.setAttribute('value', JSON.stringify(jst.json));
+        }
     }
     
 })();

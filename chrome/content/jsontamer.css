@@ -1,3 +1,33 @@
 #right_column > hbox > label {
     width: 3em;
 }
+
+treechildren::-moz-tree-image(object)
+{
+    list-style-image: url('typeicons/object.gif');
+    margin-right: 3px;
+}
+
+treechildren::-moz-tree-image(string)
+{
+    list-style-image: url('typeicons/string.png');
+    margin-right: 3px;
+}
+
+treechildren::-moz-tree-image(number)
+{
+    list-style-image: url('typeicons/number.png');
+    margin-right: 3px;
+}
+
+treechildren::-moz-tree-image(array)
+{
+    list-style-image: url('typeicons/array.gif');
+    margin-right: 3px;
+}
+
+treechildren::-moz-tree-image(unknown)
+{
+    list-style-image: url('typeicons/unknown.png');
+    margin-right: 3px;
+}
