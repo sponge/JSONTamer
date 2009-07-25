@@ -26,6 +26,18 @@ treechildren::-moz-tree-image(array)
     margin-right: 3px;
 }
 
+treechildren::-moz-tree-image(boolean)
+{
+    list-style-image: url('typeicons/boolean.png');
+    margin-right: 3px;
+}
+
+treechildren::-moz-tree-image(null)
+{
+    list-style-image: url('typeicons/null.png');
+    margin-right: 3px;
+}
+
 treechildren::-moz-tree-image(unknown)
 {
     list-style-image: url('typeicons/unknown.png');

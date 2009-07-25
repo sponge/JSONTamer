@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="jsontamer.css" type="text/css"?>
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer" onload="jsontamer.load();">
+<!DOCTYPE page SYSTEM "chrome://jsontamer/locale/jsontamer.dtd">
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="JSONTamer">
 	<style xmlns="http://www.w3.org/1999/xhtml" type="text/css" href="jsontamer.css"/>
+        <script type="application/x-javascript" src="json2.js"/>
 	<script type="application/x-javascript" src="jsontamer.js"/>
 	<hbox flex="1" orient="vertical">
-		<vbox orient="vertical" id="right_column" style="padding:1em;">
+		<vbox orient="vertical" id="right_column" style="padding:1em 0.25em;">
 			<hbox id="hbox_value">
-				<label control="edit_value" value="JSON String"/>
-				<textbox id="edit_value" multiline="false" flex="1"/>
-				<button label="Save" id="edit_save" oncommand="jsontamer.saveClicked();"/>
+				<textbox id="edit_value" multiline="false" flex="1" onkeypress="jsontamer.checkSubmit(event)"/>
+				<button label="Display" id="edit_save" oncommand="jsontamer.saveClicked();"/>
 			</hbox>
 		</vbox>
 		<vbox flex="5" id="left_column">
@@ -18,11 +19,10 @@
 					<treecol id="firstname" label="Name" primary="true" flex="3"/>
 					<splitter class="tree-splitter"/>
 					<treecol id="lastname" label="Value" flex="7"/>
+                                        <splitter class="tree-splitter"/>
 				</treecols>
 				<treechildren id="treechildren"/>
 			</tree>
 		</vbox>
-		<splitter style="padding:0;margin:0;"/>
-		<resizer/>
 	</hbox>
 </window>

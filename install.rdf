@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>sponge@d8d.org</em:id>
-    <em:version>1.0</em:version>
+    <em:version>0.1</em:version>
     <em:type>2</em:type>
    
     <!-- Target Application this extension can install into, 
@@ -13,16 +13,16 @@
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>1.5</em:minVersion>
+        <em:minVersion>3.0</em:minVersion>
         <em:maxVersion>3.5.*</em:maxVersion>
       </Description>
     </em:targetApplication>
    
     <!-- Front End MetaData -->
-    <em:name>sample</em:name>
-    <em:description>A test extension</em:description>
-    <em:creator>Your Name Here</em:creator>
-    <em:homepageURL>http://www.example.com/</em:homepageURL>
+    <em:name>JSONTamer</em:name>
+    <em:description>A sidebar visualizer of JSON data</em:description>
+    <em:creator>Mike Rubits</em:creator>
+    <em:homepageURL>http://d8d.org/</em:homepageURL>
   </Description>      
 </RDF>
 

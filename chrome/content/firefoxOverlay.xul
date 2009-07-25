@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://jsontamer/locale/jsontamer.dtd">
+<overlay id="emptySidebarOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <menupopup id="viewSidebarMenu">
+    <menuitem key="key_openJSONTamer" observes="JSONTamer"  />
+  </menupopup>
+  
+  <keyset id="mainKeyset">
+    <key id="key_openJSONTamer" command="JSONTamer"
+         key="Z" 
+         modifiers="accel shift" />
+  </keyset>
+  
+  <broadcasterset id="mainBroadcasterSet"> 
+    <broadcaster id="JSONTamer" 
+                 label="JSONTamer"
+                 autoCheck="false"
+                 type="checkbox"
+                 group="sidebar"
+                 sidebarurl="chrome://jsontamer/content/jsontamer.xul"
+                 sidebartitle="JSONTamer"
+                 oncommand="toggleSidebar('JSONTamer');" />
+  </broadcasterset>
+  
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="jsontamer-open" label="JSONTamer"
+      oncommand='window.open("chrome://jsontamer/content/jsontamer.xul", "", "chrome,resizable=yes,width=640,height=480");'/>
+  </menupopup> 
+</overlay>

@@ -1,1 +1,4 @@
 content jsontamer chrome/content/
+skin	jsontamer	classic/1.0	chrome/skin/
+overlay	chrome://browser/content/browser.xul	chrome://jsontamer/content/firefoxOverlay.xul
+
